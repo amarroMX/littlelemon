@@ -11,16 +11,18 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+from dotenv import dotenv_values
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+secret_config = dotenv_values('.env.secret')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-nyepjap=rwqmf6cxnhfu0_l_64n+p^1awtf%&2bb(7ony!t6go'
+SECRET_KEY = secret_config.get('App_Secret')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -37,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'restaurant',
 ]
 
 MIDDLEWARE = [
@@ -75,8 +78,15 @@ WSGI_APPLICATION = 'littlelemon.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE':   'django.db.backends.mysql',
+        'NAME':     secret_config.get('DB_Name'),
+        'HOST':     secret_config.get('DB_Host'),
+        'PORT':     secret_config.get('DB_Port'),
+        'USER':     secret_config.get('DB_User'),
+        'PASSWORD': secret_config.get('DB_Password'),
+        'OPTIONS': {
+             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+        }
     }
 }
 
