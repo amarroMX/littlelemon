@@ -48,7 +48,7 @@ class MenuTest(TestCase):
         self.menu.price=1000
         self.menu.save()
         self.assertIsInstance(self.menu.created_at, datetime)
-        self.assertEqual(self.menu.created_at.last_modifieddate(), self.yesterday.date())
+        self.assertEqual(self.menu.created_at.date(), self.yesterday.date())
 
     def test_last_modified_date(self):
         today = datetime.today()
