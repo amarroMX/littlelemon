@@ -1,0 +1,14 @@
+create a .env file. Change your  database credentials according to your needs. 
+Django_Secret=y8KVswHN46ByhfYf3+l4aQUiwKoUou9X
+DB_Name=restaurant
+DB_Host=localhost
+DB_Port=3306
+DB_User=djangoadmin
+DB_Password=Sliver@05121985
+
+URl routes
+
+/restaurant/menu
+/restaurant/<pk:int>
+/restaurant/tables
+/restaurant/tables/<pk:int>
