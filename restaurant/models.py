@@ -1,4 +1,5 @@
 from django.db import models
+from datetime import datetime
 
 
 class Menu(models.Model):
@@ -7,6 +8,7 @@ class Menu(models.Model):
     inventory = models.IntegerField()
     created_at = models.DateTimeField(auto_now_add=True)
     last_modified = models.DateTimeField(auto_now=True)
+ 
 
 
     def __str__(self):
@@ -17,7 +19,7 @@ class Booking(models.Model):
     name = models.CharField(max_length=255)
     no_of_guests = models.IntegerField()
     booking_date = models.DateTimeField()
-    created_at = models.DateTimeField(auto_now_add=True)
+    created_at = models.DateTimeField(auto_now_add=True, auto_now=False)
     last_modified = models.DateTimeField(auto_now=True)
 
 
