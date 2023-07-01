@@ -6,13 +6,13 @@ from dotenv import dotenv_values
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-secret_config = dotenv_values('.env')
+DATABASE_CONFIG = dotenv_values('.env')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = secret_config.get('App_Secret')
+SECRET_KEY = 'django-insecure-nyepjap=rwqmf6cxnhfu0_l_64n+p^1awtf%&2bb(7ony!t6go'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -70,11 +70,11 @@ WSGI_APPLICATION = 'littlelemon.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': "restaurant",
-        'HOST': "127.0.0.1",
-        'PORT': "3306",
-        'USER': "django-admin",
-        'PASSWORD': "M4567890",
+        'NAME': DATABASE_CONFIG.get('DB_Name'),
+        'HOST':  DATABASE_CONFIG.get('DB_Host'),
+        'PORT':  DATABASE_CONFIG.get('DB_Port'),
+        'USER':  DATABASE_CONFIG.get('DB_User'),
+        'PASSWORD':  DATABASE_CONFIG.get('DB_Password'),
         'OPTIONS': {
             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
         }
