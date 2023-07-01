@@ -1,4 +1,7 @@
-# littlelemon
 
-# Static site for small restaurant with online ordering and rerservations system.
-# Django-DRF-Javascript-Html-CSS
+###URl routes
+
+/restaurant/menu
+/restaurant/<pk:int>
+/restaurant/tables
+/restaurant/tables/<pk:int>
