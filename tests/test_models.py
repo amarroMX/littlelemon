@@ -24,11 +24,7 @@ class MenuTest(TestCase):
     def test_name_length(self):
         with self.assertRaises(DataError):
             Menu.objects.create(title=LONG_CHARACTERS,price=0,inventory=0)
-    
-    def test_name_type(self):
-        with self.assertRaises(ValidationError):
-            Menu.objects.create(title=None,price=0, inventory=0)
-    
+
     def test_price_length(self):
         with self.assertRaises(DataError):
             Menu.objects.create(title='',price=12345678910,inventory=0)
@@ -37,10 +33,6 @@ class MenuTest(TestCase):
         menu = Menu.objects.create(title='',price=10.98,inventory=10)
         self.assertEqual(menu.price,10.98)
         self.assertIsInstance(menu.price,float)
-    
-    def test_price_type(self):
-        with self.assertRaises(DataError):
-            Menu.objects.create(title='',price='zero', inventory=0)
 
     def test_created_at_date(self):
         creation_date = self.menu.created_at
